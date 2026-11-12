@@ -1,0 +1,78 @@
+# SEVEN SIGMA
+
+> Binance Agent ID NFT mint on BNB Smart Chain MAINNET (chain 56).
+> 777 total supply. First 150 FREE for Binance Agent ID holders (1 per
+> wallet, gas only) — SOLD OUT. Paid phase: 0.00042 BNB (~$0.30) per mint,
+> max 3 per transaction, open to ALL wallets. PAID mint does NOT check
+> Agent ID. Only the FREE mint checks Agent ID.
+
+## Contract
+
+- Name: SEVEN SIGMA
+- Symbol: SIGMA
+- Chain: BNB Smart Chain mainnet, chainId 56
+- Contract (mainnet): 0x9281740a566901aFBA3E566e505e1896bE176ff8
+- BscScan: https://bscscan.com/address/0x9281740a566901aFBA3E566e505e1896bE176ff8
+- Sourcify (chain 56): verified, exact match — https://sourcify.dev/server/v2/contract/56/0x9281740a566901aFBA3E566e505e1896bE176ff8
+- Agent ID registry (MAINNET, real): 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
+- Mint price (paid phase): 0.00042 BNB per NFT (exact payment required)
+- Max supply: 777
+- Free supply: 150 (sold out)
+- Paid supply: 627
+- Max paid per transaction: 3
+- Royalties: 5% ERC-2981 to the owner (some marketplaces ignore ERC-2981)
+- Art: 7 Dark Stone variants, 111 of each. Variant = (tokenId - 1) mod 7 + 1.
+- Metadata baseURI: https://sevensigma.pages.dev/metadata/
+
+## Checks (run these first, read-only, no wallet needed)
+
+Call these on the contract via a public BSC mainnet RPC before minting:
+
+- totalSupply() -> uint256 — total minted so far
+- freeMintedCount() -> uint256 — free mints used so far (0..150)
+- freeRemaining() -> uint256 — free mints left (0 — sold out)
+- paidRemaining() -> uint256 — paid mints left
+- paidMinted() -> uint256 — paid mints used so far
+- freeOpen() -> bool — true while free mints remain (false — sold out)
+- paidOpen() -> bool — true now that the free 150 are exhausted
+- freeMinted(address wallet) -> bool — true if this wallet already used its free mint
+- balanceOf(address wallet) -> uint256 — SIGMA held by this wallet
+- Registry balanceOf(address wallet) -> uint256 — on the real registry above; > 0 means the wallet holds a Binance Agent ID
+
+## Mint
+
+Free mint (SOLD OUT — do not call freeMint()):
+
+- Function: freeMint()
+- Value: 0 (gas only). Non-payable — any attached BNB reverts.
+- Quantity: 1 per wallet, ever.
+- Requires: registry balanceOf(wallet) > 0 AND freeMinted(wallet) == false.
+- Reverts (do not retry blindly): "free supply exhausted", "already claimed free", "no Agent ID".
+
+Paid mint (open now):
+
+- Function: mint(uint256 qty)
+- Value: exactly 0.00042 BNB * qty (e.g. mint(1) = 0.00042, mint(3) = 0.00126).
+- Quantity: 1..3 per transaction.
+- Requires: NO Agent ID check — any wallet can paid-mint.
+- Reverts: "paid mint not open yet", "wrong price", "qty 1..3", "exceeds max supply".
+
+## Safety rules for AI agents
+
+- Preview the contract call first and show the user the parsed transaction, the exact value, and any risks before executing.
+- Wait for the user's explicit confirmation before executing any mint.
+- Never call freeMint() — the free phase is sold out.
+- Never attach BNB to freeMint().
+- Never mint more than 3 per transaction.
+- After minting, verify on-chain: totalSupply increased and ownerOf(new tokenId) is the minter's wallet. Show the transaction hash with a BscScan link.
+- This is MAINNET. Use real BNB.
+
+## Token note
+
+- The NFT collection symbol is SIGMA. A future token called $SIGMA is planned — same ticker, separate thing. $SIGMA is the planned fee / staking / governance token of the Mesh, 777,000,000 total planned, 7.77% reserved for Node holders weighted by hold time, with a multiplier for the Genesis 150. No date, no price, and no airdrop is promised. Holding a Node does not entitle anyone to tokens or payouts.
+- No floor price, returns, or APY is promised. The contract is NOT audited by a third party.
+
+## Mint site
+
+- https://sevensigma.pages.dev/ — paste a wallet address to check Agent ID status, or connect a wallet to mint in the browser (mainnet).
+- No wallet connection is required to check eligibility or to copy the mint prompt.

@@ -1,0 +1,287 @@
+{
+  "network": "anvil-local (dry run)",
+  "startedAt": "2026-11-02T07:39:00.360Z",
+  "tests": [
+    {
+      "name": "mock registry deploys",
+      "ok": true,
+      "detail": "gas 308419"
+    },
+    {
+      "name": "SevenSigma deploys",
+      "ok": true,
+      "detail": "gas 1811365 (local addr 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512)"
+    },
+    {
+      "name": "name/symbol",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "constants",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "totalSupply starts 0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "freeRemaining 150 / paidRemaining 627 at start",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "freeOpen true at start",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "paidOpen false at start",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "owner is deployer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "registry is mock",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "non-agent freeMint reverts",
+      "ok": true,
+      "detail": "execution reverted: \"no Agent ID\""
+    },
+    {
+      "name": "paid mint blocked during free phase",
+      "ok": true,
+      "detail": "execution reverted: \"paid mint not open yet\""
+    },
+    {
+      "name": "agent freeMint succeeds",
+      "ok": true,
+      "detail": "token #1, gas 127754"
+    },
+    {
+      "name": "freeMinted mapping set",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "freeMintedCount = 1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tokenURI uses baseURI",
+      "ok": true,
+      "detail": "baseURI empty on fresh deploy; set via setBaseURI before launch"
+    },
+    {
+      "name": "freeMint with value reverts",
+      "ok": true,
+      "detail": "execution reverted (no data present; likely require(false) occurred"
+    },
+    {
+      "name": "royaltyInfo 5% to owner",
+      "ok": true,
+      "detail": "receiver 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, amount 0.05 BNB on 1 BNB sale"
+    },
+    {
+      "name": "supportsInterface ERC2981",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "double freeMint reverts",
+      "ok": true,
+      "detail": "transaction execution reverted"
+    },
+    {
+      "name": "non-owner setBaseURI reverts",
+      "ok": true,
+      "detail": "execution reverted (unknown custom error)"
+    },
+    {
+      "name": "owner setBaseURI succeeds + tokenURI",
+      "ok": true,
+      "detail": "gas 91474, tokenURI(1)=https://example.invalid/metadata/1"
+    },
+    {
+      "name": "free supply exhausted (150/150)",
+      "ok": true,
+      "detail": "took 5s"
+    },
+    {
+      "name": "freeOpen false after exhaustion",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "paidOpen true after exhaustion",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "freeRemaining 0 after exhaustion",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "freeMint after exhaustion reverts",
+      "ok": true,
+      "detail": "execution reverted: \"free supply exhausted\""
+    },
+    {
+      "name": "plain wallet has no Agent ID",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "non-agent paid mint x1 succeeds (paid open to all)",
+      "ok": true,
+      "detail": "token #151 to non-agent, gas 102531"
+    },
+    {
+      "name": "paidMinted = 1 after non-agent mint",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "agent paid mint x3 at 0.00126 BNB succeeds",
+      "ok": true,
+      "detail": "gas 122431"
+    },
+    {
+      "name": "paidMinted = 4",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "wrong-price paid mint reverts",
+      "ok": true,
+      "detail": "execution reverted: \"wrong price\""
+    },
+    {
+      "name": "qty 0 reverts",
+      "ok": true,
+      "detail": "execution reverted: \"qty 1..3\""
+    },
+    {
+      "name": "qty 4 reverts",
+      "ok": true,
+      "detail": "execution reverted: \"qty 1..3\""
+    },
+    {
+      "name": "totalSupply reaches cap 777",
+      "ok": true,
+      "detail": "paid 623 more in 7s"
+    },
+    {
+      "name": "paidMinted = 627 at cap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "paidRemaining 0 at cap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "paidOpen false at cap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "paid mint past cap 777 reverts",
+      "ok": true,
+      "detail": "execution reverted: \"exceeds max supply\""
+    },
+    {
+      "name": "contract holds paid BNB 0.26334",
+      "ok": true,
+      "detail": "0.26334 BNB"
+    },
+    {
+      "name": "withdraw tx succeeds",
+      "ok": true,
+      "detail": "gas 32137"
+    },
+    {
+      "name": "owner withdraw empties contract",
+      "ok": true,
+      "detail": "0.0 BNB left"
+    },
+    {
+      "name": "non-owner withdraw reverts",
+      "ok": true,
+      "detail": "execution reverted (unknown custom error)"
+    }
+  ],
+  "deployment": {
+    "mockAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "mockDeployGas": "308419",
+    "sevenSigmaAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "sevenSigmaDeployGas": "1811365"
+  },
+  "freeMint": {
+    "tx": "0xfd602ba709aac5bc78907c7dcb79038489c347e5caa61d131496c94657fef263",
+    "gas": "127754"
+  },
+  "royalty": {
+    "receiver": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "amountWei": "50000000000000000",
+    "salePriceWei": "1000000000000000000"
+  },
+  "setBaseURI": {
+    "tx": "0xf6bcdb2efe7d4c32f4cf259d0445f545b64a9c10f17bdf9717a46a66ed165cc0",
+    "gas": "91474"
+  },
+  "paidMintX1": {
+    "tx": "0x1edb0e655ea77f3242fb1c95588d1ea063dcb5d956b35ce7e66e30827f6152f2",
+    "gas": "102531",
+    "qty": 1,
+    "by": "non-agent"
+  },
+  "paidMintX3": {
+    "tx": "0x8de38a9c2ee9e0cf884e45dec42037a646c0b8567e17f15c8e53794ce4fafe70",
+    "gas": "122431",
+    "qty": 3,
+    "by": "agent"
+  },
+  "withdraw": {
+    "tx": "0x8a707c8d0682ba55ba09235e5f0d9195ad82fe22717d24f5f22579e7f3058bb7",
+    "gas": "32137",
+    "balanceAfter": "0"
+  },
+  "mainnetCostEstimate": {
+    "gasPriceAssumption": "0.05 gwei",
+    "bnbPriceAssumptionUsd": 710.4,
+    "sevenSigmaDeployGas": "1811365",
+    "sevenSigmaDeployBnb": "0.00009056825",
+    "sevenSigmaDeployUsd": "0.0643",
+    "freeMintGas": "127754",
+    "freeMintBnb": "0.0000063877",
+    "freeMintUsd": "0.0045",
+    "paidMintX1Gas": "102531",
+    "paidMintX1Bnb": "0.00000512655",
+    "paidMintX1Usd": "0.0036",
+    "paidMintX3Gas": "122431",
+    "paidMintX3Bnb": "0.00000612155",
+    "paidMintX3Usd": "0.0043",
+    "withdrawGas": "32137",
+    "withdrawBnb": "0.00000160685",
+    "withdrawUsd": "0.0011",
+    "setBaseURIGas": "91474",
+    "setBaseURIBnb": "0.0000045737",
+    "setBaseURIUsd": "0.0032",
+    "note": "Mock is local-only; mainnet uses the real registry, so mainnet deployment = SevenSigma deploy only (+ setBaseURI tx)."
+  },
+  "finishedAt": "2026-11-02T07:39:13.871Z",
+  "allPassed": true
+}

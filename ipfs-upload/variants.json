@@ -1,0 +1,91 @@
+{
+  "variants": [
+    {
+      "id": 1,
+      "name": "Dark Stone — Original",
+      "cid": "bafybeihiqjeo3hqjar7uhos2zneipwlnaxrjxa5tjsbhkvmrwhehwpx5o4",
+      "size": "Medium",
+      "direction": "Upright",
+      "lightAngle": "Centre",
+      "lightColour": "Dim White",
+      "strategy": "Basis Trade",
+      "file": "variant-1.webp"
+    },
+    {
+      "id": 2,
+      "name": "Dark Stone — Teal Left",
+      "cid": "bafybeiaoosixoccz7hzkuucchynvhndk3qrqy4jp6hiymc7hrgkigz2juy",
+      "size": "Small",
+      "direction": "Tilted Left",
+      "lightAngle": "Top-Left",
+      "lightColour": "Teal",
+      "strategy": "Funding-Rate Harvest",
+      "file": "variant-2.webp"
+    },
+    {
+      "id": 3,
+      "name": "Dark Stone — Gold Right",
+      "cid": "bafybeihlt5ud5ezn3x43cu5te62ra2qnqsfdoonkgnbnqnfoa2o5wl4lou",
+      "size": "Large",
+      "direction": "Tilted Right",
+      "lightAngle": "Top-Right",
+      "lightColour": "Gold",
+      "strategy": "Volatility Convexity",
+      "file": "variant-3.webp"
+    },
+    {
+      "id": 4,
+      "name": "Dark Stone — Violet Above",
+      "cid": "bafkreigbi3dxp3vsjqqg7qnlzmop5ixgmiptt3stks5lzcbz6ckg2l7p5i",
+      "size": "Medium",
+      "direction": "Upright",
+      "lightAngle": "Above",
+      "lightColour": "Violet",
+      "strategy": "Cross-Market Arbitrage",
+      "file": "variant-4.webp"
+    },
+    {
+      "id": 5,
+      "name": "Dark Stone — Ember Below",
+      "cid": "bafkreigid6n6wkngbk4s76jb3bpaal7juhgvkwakqwkibuvptx5u7nit4a",
+      "size": "Small",
+      "direction": "Upright",
+      "lightAngle": "Bottom-Left",
+      "lightColour": "Ember Orange",
+      "strategy": "TWAP Stealth Execution",
+      "file": "variant-5.webp"
+    },
+    {
+      "id": 6,
+      "name": "Dark Stone — White Right",
+      "cid": "bafybeie3htvrgdy2hxoxz3z4r2yif2yhmbavjncy5xjvly2s5owbf72zhu",
+      "size": "Large",
+      "direction": "Tilted Left",
+      "lightAngle": "Bottom-Right",
+      "lightColour": "White",
+      "strategy": "MEV-Shielded Routing",
+      "file": "variant-6.webp"
+    },
+    {
+      "id": 7,
+      "name": "Dark Stone — Gold Above",
+      "cid": "bafybeiagl55n6fcpn22eqceab7ma6mk7ogh3onypy4gnkig6setiifdboi",
+      "size": "Medium",
+      "direction": "Tilted Right",
+      "lightAngle": "Above",
+      "lightColour": "Gold",
+      "strategy": "Tail-Risk Hedging",
+      "file": "variant-7.webp"
+    }
+  ],
+  "counts": {
+    "1": 111,
+    "2": 111,
+    "3": 111,
+    "4": 111,
+    "5": 111,
+    "6": 111,
+    "7": 111
+  },
+  "generatedAt": "2026-11-02T03:28:09.926Z"
+}

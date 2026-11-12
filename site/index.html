@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEVEN SIGMA — Mint on BSC Mainnet</title>
+<meta name="description" content="SEVEN SIGMA — 777 Sigma Nodes on BNB Smart Chain. 150 free Genesis Nodes sold out; 627 paid at $0.30 (0.00042 BNB) each, open to all wallets. Seven Dark Stone variants, 111 of each.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05080F; --glow: #02182E; --blue: #2B62FF; --cyan: #22C8F5;
+    --card: #0E1524; --border: #1C2A3F; --text: #8A97AC; --head: #FFFFFF;
+    --green: #22C55E; --green-dim: #2FA36B;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, sans-serif; font-size: 16px; line-height: 1.6; }
+  h1, h2, h3, .display { font-family: Oswald, "Arial Narrow", sans-serif; color: var(--head); text-transform: uppercase; line-height: 1.02; letter-spacing: .02em; margin: 0; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { background: #0A1220; border: 1px solid var(--border); padding: 2px 7px; border-radius: 6px; color: #C9D4E3; font-size: 13px; word-break: break-all; }
+  .wrap { max-width: 1150px; margin: 0 auto; padding: 0 20px; }
+  .eyebrow { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--text); font-weight: 600; }
+  .section { padding: 64px 0 8px; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 36px; }
+  .section-head h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin-top: 10px; }
+  .section-head p { margin: 14px 0 0; font-size: 17px; }
+
+  /* ---- header ---- */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(5,8,15,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .header-in { max-width: 1150px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 10px; color: var(--head); font-family: Oswald, sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+  .logo:hover { text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 19px; color: #fff; font-weight: 700; }
+  .header-right { display: flex; align-items: center; gap: 10px; }
+  .lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+  .lang-toggle button { background: transparent; border: 0; color: var(--text); font-size: 13px; font-weight: 600; padding: 7px 12px; cursor: pointer; }
+  .lang-toggle button.active { background: var(--blue); color: #fff; }
+
+  /* ---- buttons ---- */
+  .btn { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #fff; font-weight: 700; font-size: 16px; border: 0; border-radius: 999px; padding: 14px 30px; cursor: pointer; text-decoration: none; box-shadow: 0 6px 30px rgba(43,98,255,.35); }
+  .btn:hover { text-decoration: none; filter: brightness(1.1); }
+  .btn:disabled { background: #1A2436; color: #5A6B84; box-shadow: none; cursor: not-allowed; filter: none; }
+  .btn-sm { padding: 9px 18px; font-size: 14px; }
+  .btn-ghost { display: inline-block; background: transparent; border: 1px solid var(--border); color: var(--head); font-weight: 600; font-size: 15px; border-radius: 999px; padding: 13px 24px; cursor: pointer; text-decoration: none; }
+  .btn-ghost:hover { border-color: var(--cyan); text-decoration: none; }
+  .btn-green { background: linear-gradient(135deg, #1E9E5A, #22C55E); box-shadow: 0 6px 30px rgba(34,197,94,.3); }
+  .pill { display: inline-flex; align-items: center; gap: 7px; background: #0E1524; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text); }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .pill.green { color: #7CE3A8; border-color: #1E5C38; }
+
+  /* ---- hero ---- */
+  .hero { position: relative; text-align: center; padding: 76px 0 60px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 0%, var(--glow) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(34,200,245,.09) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; mask-image: linear-gradient(to bottom, black 0%, transparent 75%); -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 75%); }
+  .hero > * { position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(46px, 8.5vw, 92px); font-weight: 700; margin: 18px 0 16px; }
+  .hero h1 .grad { background: linear-gradient(90deg, var(--blue), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .sub { max-width: 640px; margin: 0 auto 28px; font-size: 18px; color: var(--text); }
+  .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .hero-art { margin: 44px auto 0; max-width: 520px; position: relative; }
+  .hero-art img { width: 100%; display: block; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 0 90px rgba(34,200,245,.28), 0 24px 60px rgba(0,0,0,.5); }
+  .hero-art::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -18px; height: 40px; background: radial-gradient(ellipse at center, rgba(34,200,245,.35), transparent 70%); filter: blur(6px); }
+  .hero-chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+  /* ---- live stats strip ---- */
+  .stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 40px 0 0; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 14px; text-align: center; }
+  .stat b { display: block; font-size: 28px; font-weight: 700; color: var(--head); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--text); }
+  .stat b.green { color: var(--green); }
+
+  /* ---- cards ---- */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  .card h3 { font-size: 22px; font-weight: 600; }
+  .note { background: #0A1220; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: 14px; text-align: left; margin: 14px 0; }
+  .note b { color: var(--head); }
+  .result { background: #0A1220; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: 14px; line-height: 1.8; text-align: left; margin: 14px 0; }
+  .result b { color: var(--head); }
+  .result b.no { color: #FF9A9A; }
+  .result b.yes { color: #7CE3A8; }
+  .status-line { min-height: 22px; color: var(--text); font-size: 14px; margin-top: 12px; word-break: break-word; }
+  input[type=text] { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid var(--border); background: #0A1220; color: #fff; font-size: 15px; text-align: center; }
+  input[type=text]:focus { outline: none; border-color: var(--blue); }
+  textarea { width: 100%; height: 320px; background: #0A1220; color: #D7E0EC; border: 1px solid var(--border); border-radius: 12px; padding: 14px; font-size: 13px; font-family: ui-monospace, monospace; resize: vertical; }
+  select { background: #0A1220; color: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 16px; }
+
+  /* ---- mint section: two columns, sticky panel ---- */
+  .mint-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; align-items: start; }
+  .mint-panel { position: sticky; top: 78px; }
+  .mint-panel .price-big { font-size: 40px; font-weight: 700; color: var(--green); font-variant-numeric: tabular-nums; line-height: 1; }
+  .mint-panel .price-sub { color: var(--text); font-size: 14px; margin-top: 4px; }
+  .mint-rows { margin: 18px 0; border-top: 1px solid var(--border); }
+  .mint-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+  .mint-row b { color: var(--head); font-variant-numeric: tabular-nums; }
+  .qty-row { display: flex; align-items: center; gap: 12px; }
+  .qty-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: #0A1220; color: var(--head); font-size: 18px; cursor: pointer; }
+  .qty-btn:hover { border-color: var(--cyan); }
+  .qty-num { font-size: 22px; font-weight: 700; color: var(--head); min-width: 28px; text-align: center; font-variant-numeric: tabular-nums; }
+  .mint-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .mint-actions .btn, .mint-actions .btn-ghost { width: 100%; text-align: center; }
+  .addr-row { display: flex; gap: 8px; align-items: center; background: #0A1220; border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 13px; }
+  .addr-row code { border: 0; background: transparent; padding: 0; flex: 1; }
+  .copy-btn { background: #16213A; border: 1px solid var(--border); color: var(--head); border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .copy-btn:hover { border-color: var(--cyan); }
+  .link-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; margin-top: 14px; }
+
+  /* ---- reveal banner (post-mint state) ---- */
+  .reveal { display: none; margin-top: 16px; border: 1px solid #1E5C38; background: linear-gradient(180deg, #0B1F16, #0A1220); border-radius: 14px; padding: 18px; text-align: center; }
+  .reveal.show { display: block; }
+  .reveal img { width: 100%; max-width: 220px; border-radius: 12px; border: 1px solid var(--border); }
+  .reveal h3 { margin-top: 12px; font-size: 24px; }
+  .reveal p { margin: 6px 0 14px; font-size: 14px; }
+  .reveal .reveal-actions { display: flex; gap: 10px; justify-content: center; }
+
+  /* ---- artwork viewer ---- */
+  .viewer-main { position: relative; }
+  .viewer-main img { width: 100%; display: block; border-radius: 14px; border: 1px solid var(--border); }
+  .viewer-main .variant-tag { position: absolute; left: 12px; top: 12px; }
+  .thumbs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 10px; }
+  .thumbs img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: block; }
+  .thumbs img.active { border-color: var(--cyan); box-shadow: 0 0 12px rgba(34,200,245,.4); }
+  .traits { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .trait { background: #0A1220; border: 1px solid var(--border); border-radius: 10px; padding: 9px 12px; font-size: 13px; text-align: left; }
+  .trait span { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text); }
+  .trait b { color: var(--head); }
+
+  /* ---- WHAT'S INSIDE bento ---- */
+  .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .bento-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; text-align: left; }
+  .bento-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+  .bento-card .bento-body { padding: 16px 18px 18px; }
+  .bento-card h3 { font-size: 20px; }
+  .bento-card p { margin: 6px 0 0; font-size: 14px; }
+  .bento-card .count { display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
+  .bento-wide { background: linear-gradient(135deg, #0B1E33, var(--card)); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: left; grid-column: span 2; display: flex; flex-direction: column; justify-content: center; }
+  .bento-wide h3 { font-size: 24px; }
+  .bento-wide p { margin: 8px 0 0; font-size: 15px; }
+
+  /* ---- steps ---- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 20px; text-align: left; }
+  .step h3 { font-size: 20px; margin-top: 14px; }
+  .step p { margin: 8px 0 0; font-size: 14px; }
+
+  /* ---- recent nodes feed ---- */
+  .feed { display: flex; flex-direction: column; gap: 10px; }
+  .feed-row { display: flex; align-items: center; gap: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; text-align: left; }
+  .feed-row img { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border); }
+  .feed-row .feed-main { flex: 1; min-width: 0; }
+  .feed-row .feed-main b { color: var(--head); display: block; font-size: 15px; }
+  .feed-row .feed-main span { font-size: 13px; color: var(--text); }
+  .feed-row .feed-id { font-family: Oswald, sans-serif; font-size: 20px; color: var(--head); font-variant-numeric: tabular-nums; }
+  .feed-empty { text-align: center; padding: 26px; color: var(--text); font-size: 15px; }
+
+  /* ---- FAQ ---- */
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .faq-q { display: flex; align-items: center; gap: 12px; width: 100%; background: transparent; border: 0; color: var(--head); font-size: 16px; font-weight: 600; text-align: left; padding: 16px 18px; cursor: pointer; font-family: Inter, sans-serif; }
+  .faq-q .qi { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; font-style: normal; }
+  .faq-q .chev { margin-left: auto; color: var(--text); font-size: 18px; transition: transform .2s; }
+  .faq-item.open .faq-q .chev { transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 18px 18px 56px; font-size: 14px; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ---- footer ---- */
+  footer { padding: 56px 0 40px; }
+  .footer-panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+  .footer-top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .footer-top p { font-size: 14px; max-width: 480px; }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+  .footer-bottom { border-top: 1px solid var(--border); margin-top: 24px; padding-top: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .mint-grid { grid-template-columns: 1fr; }
+    .mint-panel { position: static; }
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .bento-wide { grid-column: span 2; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .faq-grid { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .bento { grid-template-columns: 1fr; }
+    .bento-wide { grid-column: span 1; }
+    .steps { grid-template-columns: 1fr; }
+    .section { padding: 44px 0 4px; }
+    .hero { padding: 56px 0 44px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-in">
+    <a class="logo" href="#"><span class="logo-mark">Σ</span> Seven Sigma</a>
+    <div class="header-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="langEn" class="active" onclick="setLang('en')">EN</button>
+        <button type="button" id="langZh" onclick="setLang('zh')">中文</button>
+      </div>
+      <a class="btn btn-sm" href="#mint" data-i18n="nav_mint">Mint a Node</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="pill green"><span class="dot"></span><span data-i18n="hero_live">Live on BSC mainnet</span></span>
+    <h1><span data-i18n="hero_h1a">Mint the Node.</span><br><span class="grad" data-i18n="hero_h1b">Keep the Signal.</span></h1>
+    <p class="sub" data-i18n="hero_sub">777 Sigma Nodes on BNB Smart Chain. Seven Dark Stone variants, 111 of each — one node, seven sub-agents, provably first.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#mint" data-i18n="hero_cta">Mint a Node — $0.30</a>
+      <a class="btn-ghost" href="#inside" data-i18n="hero_secondary">See what's inside</a>
+    </div>
+    <div class="hero-art">
+      <img id="heroImg" src="https://gateway.pinata.cloud/ipfs/bafybeihiqjeo3hqjar7uhos2zneipwlnaxrjxa5tjsbhkvmrwhehwpx5o4" alt="SEVEN SIGMA — Dark Stone, Original variant">
+    </div>
+    <div class="hero-chips" id="heroChips"></div>
+    <div class="stats-strip">
+      <div class="stat"><b id="statMinted">–</b><span data-i18n="stat_minted">Minted / 777</span></div>
+      <div class="stat"><b id="statPaidLeft">–</b><span data-i18n="stat_paid_left">Paid left</span></div>
+      <div class="stat"><b id="statFreeLeft">–</b><span data-i18n="stat_free_left">Free left</span></div>
+      <div class="stat"><b class="green">$0.30</b><span data-i18n="stat_price">Paid price / Node</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MINT ============ -->
+<section class="section" id="mint">
+  <div class="wrap">
+    <div class="mint-grid">
+      <!-- Artwork viewer -->
+      <div class="card">
+        <p class="eyebrow" data-i18n="viewer_eyebrow">The 7 variants · 111 of each</p>
+        <h3 style="margin-top:8px" id="viewerName">Dark Stone — Original</h3>
+        <div class="viewer-main" style="margin-top:14px">
+          <img id="viewerImg" src="https://gateway.pinata.cloud/ipfs/bafybeihiqjeo3hqjar7uhos2zneipwlnaxrjxa5tjsbhkvmrwhehwpx5o4" alt="SEVEN SIGMA variant artwork">
+          <span class="pill variant-tag"><span id="viewerTag">Variant 1 of 7</span></span>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+        <div class="traits" id="traits"></div>
+        <p style="font-size:14px;margin:16px 0 0" data-i18n="viewer_note">Token assignment is cyclic — variant = (tokenId − 1) mod 7 + 1 — so every variant is spread through the free and paid phases. Your variant is revealed when you mint.</p>
+      </div>
+
+      <!-- Sticky mint panel -->
+      <div class="card mint-panel">
+        <span class="pill green"><span class="dot"></span><span data-i18n="panel_live">Live on BSC mainnet</span></span>
+        <p class="eyebrow" style="margin-top:16px" data-i18n="panel_eyebrow">Paid mint · open to all wallets</p>
+        <div style="margin-top:10px"><span class="price-big">$0.30</span></div>
+        <div class="price-sub" data-i18n="panel_price_sub">0.00042 BNB per Node · max 3 per transaction</div>
+        <div class="mint-rows">
+          <div class="mint-row"><span data-i18n="row_minted">Minted</span><b><span id="panelMinted">–</span> / 777</b></div>
+          <div class="mint-row"><span data-i18n="row_paid_left">Paid Nodes left</span><b id="panelPaidLeft">–</b></div>
+          <div class="mint-row"><span data-i18n="row_free">Free Genesis (150)</span><b style="color:#FF9A9A" data-i18n="row_free_sold">Sold out</b></div>
+          <div class="mint-row"><span data-i18n="row_qty">Quantity</span>
+            <span class="qty-row">
+              <button type="button" class="qty-btn" id="qtyMinus" aria-label="Less">−</button>
+              <span class="qty-num" id="qtyNum">1</span>
+              <button type="button" class="qty-btn" id="qtyPlus" aria-label="More">+</button>
+            </span>
+          </div>
+          <div class="mint-row"><span data-i18n="row_total">Total</span><b><span id="totalUsd">$0.30</span> · <span id="totalBnb">0.00042 BNB</span></b></div>
+        </div>
+        <div class="mint-actions">
+          <button type="button" class="btn" id="connectBtn" data-i18n="btn_connect">Connect wallet</button>
+          <button type="button" class="btn btn-green" id="paidMintBtn" disabled data-i18n="btn_mint">Mint Node</button>
+        </div>
+        <div class="status-line" id="mintStatus" data-i18n="mint_status_default">Connect a wallet on BNB Smart Chain to mint. Paid mint needs no Agent ID.</div>
+
+        <!-- Post-mint reveal -->
+        <div class="reveal" id="revealBox">
+          <img id="revealImg" src="" alt="Your minted Node">
+          <h3 id="revealTitle">You pulled a Node</h3>
+          <p id="revealLine"></p>
+          <div class="reveal-actions">
+            <button type="button" class="btn-ghost" id="revealKeep" data-i18n="reveal_keep">Keep</button>
+            <a class="btn btn-sm" id="revealView" href="#" target="_blank" rel="noopener" data-i18n="reveal_view">View Node</a>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:16px"><b data-i18n="panel_note_title">Free phase is over.</b> <span data-i18n="panel_note_body">All 150 free Genesis Nodes were claimed. Paid minting is open to everyone — no Agent ID needed, any wallet can mint.</span></div>
+        <div class="addr-row"><code id="contractAddr">0x9281740a566901aFBA3E566e505e1896bE176ff8</code><button type="button" class="copy-btn" data-copy="0x9281740a566901aFBA3E566e505e1896bE176ff8" data-i18n="btn_copy">Copy</button></div>
+        <div class="link-row">
+          <a href="https://bscscan.com/address/0x9281740a566901aFBA3E566e505e1896bE176ff8" target="_blank" rel="noopener">BscScan</a>
+          <a href="https://sourcify.dev/server/v2/contract/56/0x9281740a566901aFBA3E566e505e1896bE176ff8" target="_blank" rel="noopener">Sourcify</a>
+          <a href="llms.txt" target="_blank" rel="noopener">llms.txt</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Read-only wallet checker -->
+    <div class="card" style="margin-top:20px;text-align:center">
+      <p class="eyebrow" data-i18n="check_eyebrow">Check your wallet — no connection needed</p>
+      <h3 style="margin-top:8px" data-i18n="check_title">Do you hold a Node?</h3>
+      <p style="margin:8px 0 16px" data-i18n="check_sub">Paste any wallet address. We only read the chain — nothing is signed, nothing is connected.</p>
+      <input type="text" id="addrInput" placeholder="0x… your wallet address" autocomplete="off" spellcheck="false" style="max-width:460px">
+      <br><button type="button" class="btn" id="checkBtn" style="margin-top:12px" data-i18n="check_btn">Check my wallet</button>
+      <div class="status-line" id="checkStatus" data-i18n="check_default">Paste an address above, or just read the live mint stats.</div>
+      <div class="result" id="checkResult" style="display:none;max-width:560px;margin:14px auto 0">
+        <span data-i18n="check_wallet">Wallet:</span> <code id="rAddr">–</code><br>
+        <span data-i18n="check_agent">Binance Agent ID:</span> <b id="rAgent">–</b><br>
+        <span data-i18n="check_used">Free mint already used:</span> <b id="rUsed">–</b><br>
+        <span data-i18n="check_held">SIGMA held:</span> <b id="rBalance">–</b><br>
+        <span id="rVerdict"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INSIDE ============ -->
+<section class="section" id="inside">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="inside_eyebrow">What's inside</p>
+      <h2 data-i18n="inside_title">Seven ways the light falls</h2>
+      <p data-i18n="inside_sub">One Dark Stone base, seven variants. Each variant is one of the seven strategies in the Mesh — 111 of each, spread across all 777 Nodes.</p>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<!-- ============ NEWEST NODES ============ -->
+<section class="section" id="recent">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="feed_eyebrow">Fresh from the chain</p>
+      <h2 data-i18n="feed_title">Newest Nodes</h2>
+      <p data-i18n="feed_sub">The most recently minted Nodes, read live from the contract — token, variant, and current holder.</p>
+    </div>
+    <div class="feed" id="feed"><div class="feed-empty" data-i18n="feed_loading">Loading the newest Nodes from the chain…</div></div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="how_eyebrow">How minting works</p>
+      <h2 data-i18n="how_title">Four steps to your Node</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="pill">Step 1</span><h3 data-i18n="step1_t">Connect wallet</h3><p data-i18n="step1_b">Connect any wallet on BNB Smart Chain. No Agent ID is needed for the paid mint.</p></div>
+      <div class="step"><span class="pill">Step 2</span><h3 data-i18n="step2_t">Mint — $0.30</h3><p data-i18n="step2_b">Pick 1 to 3 Nodes. Each costs exactly 0.00042 BNB. Confirm in your wallet and wait for the chain.</p></div>
+      <div class="step"><span class="pill">Step 3</span><h3 data-i18n="step3_t">Reveal your variant</h3><p data-i18n="step3_b">Your Node's variant is revealed from the mint itself — one of seven Dark Stone variants, 111 of each.</p></div>
+      <div class="step"><span class="pill">Step 4</span><h3 data-i18n="step4_t">View your Node</h3><p data-i18n="step4_b">See it in the collection metadata at /metadata/&lt;tokenId&gt;, or on BscScan under your wallet.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT A NODE IS ============ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="about_eyebrow">What a Sigma Node is</p>
+      <h2 data-i18n="about_title">A licence, not just art</h2>
+      <p data-i18n="about_sub">A Sigma Node is a verifiable compute license. Each of the 777 NFTs is one node in a Cognitive Orderflow Mesh. Seven autonomous sub-agents live inside each Node, one for each edge: basis trade, funding-rate harvest, volatility convexity, cross-market arbitrage, TWAP stealth execution, MEV-shielded routing, and tail-risk hedging. The market doesn't reward being right. It rewards being right first, provably, and at size, before the order flow decays.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="about-grid">
+      <div class="card"><h3 data-i18n="about_token_t">About the token</h3>
+        <p style="font-size:15px" data-i18n="about_token_b">The NFT collection symbol is SIGMA. A future token called $SIGMA is planned — same ticker, separate thing. $SIGMA is the planned fee / staking / governance token of the Mesh, with 777,000,000 total planned and 7.77% reserved for Node holders weighted by hold time, with a multiplier for the Genesis 150. No date, no price, and no airdrop is promised. Holding a Node does not entitle anyone to tokens or payouts.</p></div>
+      <div class="card"><h3 data-i18n="about_road_t">Roadmap — stages, not dates</h3>
+        <p style="font-size:15px" data-i18n="about_road_b">Stage 1 — Testnet build, scans, metadata (done). Stage 2 — Mainnet deploy and verification (done). Stage 3 — Launch: 150 free Genesis Nodes for Agent ID holders (sold out). Stage 4 — Paid mint open to all wallets at 0.00042 BNB (live now). Stage 5 — $SIGMA planning. No date promised, no price promised.</p></div>
+    </div>
+    <div class="note" style="margin-top:16px"><b data-i18n="about_honest_t">Honest notes:</b> <span data-i18n="about_honest_b">the contract is NOT audited by a third party. It uses OpenZeppelin ERC721 + ERC721Royalty + Ownable + ReentrancyGuard. The owner can withdraw BNB and change metadata via setBaseURI, and can transfer or renounce ownership. The owner cannot change supply (777), free supply (150), price (0.00042 BNB), max 3 per transaction, or the Agent ID registry, and cannot mint extra NFTs, pause, freeze, burn, or take holders' NFTs. Royalties are 5% ERC-2981 to the owner, but some marketplaces ignore ERC-2981. No floor price, returns, or APY is promised.</span></div>
+  </div>
+</section>
+
+<!-- ============ AGENT PROMPT ============ -->
+<section class="section" id="agent">
+  <div class="wrap">
+    <div class="card" style="text-align:center">
+      <p class="eyebrow" data-i18n="agent_eyebrow">Mint with your own AI agent</p>
+      <h3 style="margin-top:8px" data-i18n="agent_title">Copy the mint prompt</h3>
+      <p style="margin:8px 0 16px" data-i18n="agent_sub">Paste this into your AI agent (Binance Agentic Wallet, Muse, etc.). It checks everything first, shows you a preview, and waits for your OK before minting. No wallet connection needed here.</p>
+      <textarea id="agentPrompt" readonly style="text-align:left"></textarea><br>
+      <button type="button" class="btn" id="copyPrompt" style="margin-top:12px" data-i18n="agent_copy">Copy mint prompt</button>
+      <a href="llms.txt" target="_blank" rel="noopener"><button type="button" class="btn-ghost" style="margin-top:12px" data-i18n="agent_llms">View llms.txt</button></a>
+      <div class="status-line" id="copyStatus"></div>
+      <p style="font-size:14px;margin:12px 0 0" data-i18n="agent_tip">Tip: if you checked an address above, the prompt is filled in with that address. Otherwise it says "my wallet" and your agent will use whichever wallet it controls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="faq_eyebrow">Questions</p>
+      <h2 data-i18n="faq_title">Frequently asked</h2>
+    </div>
+    <div class="faq-grid" id="faqGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-panel">
+      <div class="footer-top">
+        <div>
+          <a class="logo" href="#"><span class="logo-mark">Σ</span> Seven Sigma</a>
+          <p style="margin-top:12px" data-i18n="footer_about">777 Sigma Nodes on BNB Smart Chain. Seven Dark Stone variants, 111 of each. A verifiable compute license — one node, seven sub-agents.</p>
+        </div>
+        <div class="footer-links">
+          <span class="eyebrow" data-i18n="footer_links">Links</span>
+          <a href="https://bscscan.com/address/0x9281740a566901aFBA3E566e505e1896bE176ff8" target="_blank" rel="noopener">BscScan — contract</a>
+          <a href="https://sourcify.dev/server/v2/contract/56/0x9281740a566901aFBA3E566e505e1896bE176ff8" target="_blank" rel="noopener">Sourcify — verified source</a>
+          <a href="llms.txt" target="_blank" rel="noopener">llms.txt — for AI agents</a>
+          <a href="https://sevensigma.pages.dev/metadata/1" target="_blank" rel="noopener">Metadata — Node #1</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SEVEN SIGMA · <span data-i18n="footer_rights">All rights reserved.</span></span>
+        <span data-i18n="footer_note">No floor price, returns, or APY is promised. Holding a Node does not entitle anyone to tokens or payouts.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js"></script>
+<script>
+// --- SEVEN SIGMA — BSC MAINNET (chain 56) ---
+const CONTRACT_ADDRESS = "0x9281740a566901aFBA3E566e505e1896bE176ff8";
+const REGISTRY_ADDRESS = "0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F"; // real Binance Agent ID registry
+const CHAIN_ID = 56; // BNB Smart Chain mainnet
+const RPC_URLS = [
+  "https://1rpc.io/bnb",
+  "https://bsc-dataseed.binance.org",
+  "https://bsc.meowrpc.com"
+];
+const PAID_PRICE_BNB = 0.00042; // per NFT (~$0.30)
+const EXPLORER_TX = "https://bscscan.com/tx/";
+const EXPLORER_TOKEN = "https://bscscan.com/token/" + CONTRACT_ADDRESS + "?a=";
+const GATEWAY = "https://gateway.pinata.cloud/ipfs/";
+const MIN_ABI = [
+  "function mint(uint256 qty) payable",
+  "function freeMint()",
+  "function totalSupply() view returns (uint256)",
+  "function freeMintedCount() view returns (uint256)",
+  "function freeRemaining() view returns (uint256)",
+  "function paidRemaining() view returns (uint256)",
+  "function paidMinted() view returns (uint256)",
+  "function freeOpen() view returns (bool)",
+  "function paidOpen() view returns (bool)",
+  "function freeMinted(address) view returns (bool)",
+  "function balanceOf(address) view returns (uint256)",
+  "function ownerOf(uint256) view returns (address)",
+  "function PAID_PRICE() view returns (uint256)",
+  "function name() view returns (string)",
+  "function symbol() view returns (string)"
+];
+const REGISTRY_ABI = ["function balanceOf(address) view returns (uint256)"];
+const $ = (id) => document.getElementById(id);
+const short = (a) => a ? a.slice(0, 6) + "…" + a.slice(-4) : "–";
+
+// ---- The 7 variants (Dark Stone base, 111 each) ----
+const VARIANTS = [
+  { n: 1, name: "Dark Stone — Original", cid: "bafybeihiqjeo3hqjar7uhos2zneipwlnaxrjxa5tjsbhkvmrwhehwpx5o4", size: "Medium", dir: "Upright", angle: "Centre", colour: "Dim White", strategy: "Basis Trade" },
+  { n: 2, name: "Dark Stone — Teal Left", cid: "bafybeiaoosixoccz7hzkuucchynvhndk3qrqy4jp6hiymc7hrgkigz2juy", size: "Small", dir: "Tilted Left", angle: "Top-Left", colour: "Teal", strategy: "Funding-Rate Harvest" },
+  { n: 3, name: "Dark Stone — Gold Right", cid: "bafybeihlt5ud5ezn3x43cu5te62ra2qnqsfdoonkgnbnqnfoa2o5wl4lou", size: "Large", dir: "Tilted Right", angle: "Top-Right", colour: "Gold", strategy: "Volatility Convexity" },
+  { n: 4, name: "Dark Stone — Violet Above", cid: "bafkreigbi3dxp3vsjqqg7qnlzmop5ixgmiptt3stks5lzcbz6ckg2l7p5i", size: "Medium", dir: "Upright", angle: "Above", colour: "Violet", strategy: "Cross-Market Arbitrage" },
+  { n: 5, name: "Dark Stone — Ember Below", cid: "bafkreigid6n6wkngbk4s76jb3bpaal7juhgvkwakqwkibuvptx5u7nit4a", size: "Small", dir: "Upright", angle: "Bottom-Left", colour: "Ember Orange", strategy: "TWAP Stealth Execution" },
+  { n: 6, name: "Dark Stone — White Right", cid: "bafybeie3htvrgdy2hxoxz3z4r2yif2yhmbavjncy5xjvly2s5owbf72zhu", size: "Large", dir: "Tilted Left", angle: "Bottom-Right", colour: "White", strategy: "MEV-Shielded Routing" },
+  { n: 7, name: "Dark Stone — Gold Above", cid: "bafybeiagl55n6fcpn22eqceab7ma6mk7ogh3onypy4gnkig6setiifdboi", size: "Medium", dir: "Tilted Right", angle: "Above", colour: "Gold", strategy: "Tail-Risk Hedging" }
+];
+const variantOf = (tokenId) => VARIANTS[(tokenId - 1) % 7];
+const imgOf = (v) => GATEWAY + v.cid;
+
+// ---- Multi-RPC read helper (tries each public RPC in turn) ----
+function withTimeout(promise, ms) {
+  return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
+}
+async function readWithFallback(fn) {
+  let lastErr = null;
+  for (const url of RPC_URLS) {
+    try {
+      const provider = new ethers.JsonRpcProvider(url, CHAIN_ID);
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, MIN_ABI, provider);
+      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
+      return await withTimeout(fn(contract, registry, provider), 9000);
+    } catch (e) { lastErr = e; }
+  }
+  throw lastErr || new Error("all RPCs failed");
+}
+async function safeCall(promise) { try { return await promise; } catch (e) { return null; } }
+
+let provider, signer, contract, userAddr = null, checkedAddr = null, qty = 1, liveStats = null;
+
+function setStatus(el, html) { $(el).innerHTML = html; }
+function txLink(hash, label) {
+  return (label || "Transaction") + ': <a href="' + EXPLORER_TX + hash + '" target="_blank" rel="noopener">' + hash + "</a>";
+}
+function plainError(e) {
+  const msg = (e && (e.reason || e.shortMessage || e.message)) || "Something went wrong.";
+  if (e && e.code === "ACTION_REJECTED") return "You cancelled in your wallet — nothing was sent.";
+  if (/no Agent ID/i.test(msg)) return "This wallet doesn't hold a Binance Agent ID, so it can't use the free mint.";
+  if (/already claimed/i.test(msg)) return "You've already used your one free mint with this wallet.";
+  if (/free supply exhausted/i.test(msg)) return "Sorry — all 150 free mints are gone. Paid minting is open.";
+  if (/paid mint not open/i.test(msg)) return "Paid minting isn't open right now.";
+  if (/wrong price/i.test(msg)) return "Wrong payment amount — the price is exactly 0.00042 BNB per NFT.";
+  if (/qty 1\.\.3/i.test(msg)) return "You can mint 1 to 3 at a time.";
+  if (/exceeds max supply/i.test(msg)) return "That would go past the 777 total supply.";
+  if (/insufficient funds/i.test(msg)) return "Not enough BNB in your wallet for gas and the mint price.";
+  return "Mint failed: " + msg;
+}
+
+// ---- Artwork viewer + bento + hero chips (built from the real variant data) ----
+let currentVariant = 0;
+function renderViewer(i) {
+  currentVariant = i;
+  const v = VARIANTS[i];
+  $("viewerImg").src = imgOf(v);
+  $("viewerImg").alt = "SEVEN SIGMA — " + v.name;
+  $("viewerName").textContent = v.name;
+  $("viewerTag").textContent = "Variant " + v.n + " of 7 · 111 of this variant";
+  $("heroImg").src = imgOf(v);
+  $("heroImg").alt = "SEVEN SIGMA — " + v.name;
+  document.querySelectorAll("#thumbs img").forEach((el, j) => el.classList.toggle("active", j === i));
+  document.querySelectorAll("#heroChips .pill").forEach((el, j) => { el.style.borderColor = j === i ? "var(--cyan)" : ""; el.style.color = j === i ? "#fff" : ""; });
+  $("traits").innerHTML =
+    trait("Sigma Size", v.size) + trait("Sigma Direction", v.dir) +
+    trait("Light Angle", v.angle) + trait("Light Colour", v.colour) +
+    trait("Strategy", v.strategy) + trait("Supply", "111 of this variant");
+}
+function trait(k, v) { return '<div class="trait"><span>' + k + '</span><b>' + v + '</b></div>'; }
+function buildVariantUI() {
+  $("thumbs").innerHTML = VARIANTS.map((v, i) =>
+    '<img src="' + imgOf(v) + '" alt="Variant ' + v.n + ' — ' + v.name + '" data-i="' + i + '">').join("");
+  document.querySelectorAll("#thumbs img").forEach(el => el.onclick = () => renderViewer(Number(el.dataset.i)));
+  $("heroChips").innerHTML = VARIANTS.map((v, i) =>
+    '<button type="button" class="pill" data-i="' + i + '" style="cursor:pointer">' + v.n + ' · ' + v.name.replace("Dark Stone — ", "") + '</button>').join("");
+  document.querySelectorAll("#heroChips .pill").forEach(el => el.onclick = () => { renderViewer(Number(el.dataset.i)); document.getElementById("mint").scrollIntoView({ behavior: "smooth" }); });
+  $("bento").innerHTML = VARIANTS.map((v) =>
+    '<div class="bento-card"><img src="' + imgOf(v) + '" alt="Variant ' + v.n + ' — ' + v.name + '" loading="lazy">' +
+    '<div class="bento-body"><h3>' + v.n + ' · ' + v.name.replace("Dark Stone — ", "") + '</h3>' +
+    '<p>' + v.size + ' · ' + v.dir + ' · ' + v.angle + ' · ' + v.colour + ' · ' + v.strategy + '</p>' +
+    '<span class="count">111 of this variant</span></div></div>').join("") +
+    '<div class="bento-wide"><p class="eyebrow">How variants are assigned</p><h3>Cyclic, not random</h3>' +
+    '<p>Variant = (tokenId − 1) mod 7 + 1. Every variant is spread evenly through the free and paid phases, so no phase hoards a variant — and no mint is luckier than another. All 777 Nodes share the same Dark Stone base; only the light changes.</p></div>';
+  renderViewer(0);
+}
+buildVariantUI();
+
+// ---- Live stats (never hardcoded) ----
+async function refreshStats() {
+  try {
+    const s = await readWithFallback(async (c) => {
+      const [total, freeCount, freeLeft, paidLeft, paidCount] = await Promise.all([
+        safeCall(c.totalSupply()),
+        safeCall(c.freeMintedCount()),
+        safeCall(c.freeRemaining()),
+        safeCall(c.paidRemaining()),
+        safeCall(c.paidMinted())
+      ]);
+      return { total, freeCount, freeLeft, paidLeft, paidCount };
+    });
+    if (s.total === null) throw new Error("totalSupply read failed");
+    const total = Number(s.total);
+    const freeLeft = s.freeLeft !== null ? Number(s.freeLeft) : (s.freeCount !== null ? 150 - Number(s.freeCount) : null);
+    const paidLeft = s.paidLeft !== null ? Number(s.paidLeft) : (s.paidCount !== null ? 627 - Number(s.paidCount) : (freeLeft !== null ? 777 - total - 0 : null));
+    liveStats = { total, freeLeft, paidLeft };
+    $("statMinted").textContent = total;
+    $("panelMinted").textContent = total;
+    $("statFreeLeft").textContent = freeLeft !== null ? freeLeft : "–";
+    $("statPaidLeft").textContent = paidLeft !== null ? paidLeft : "–";
+    $("panelPaidLeft").textContent = paidLeft !== null ? paidLeft : "–";
+  } catch (e) {
+    $("statMinted").textContent = "–";
+    $("statFreeLeft").textContent = "–";
+    $("statPaidLeft").textContent = "–";
+    $("panelMinted").textContent = "–";
+    $("panelPaidLeft").textContent = "–";
+    setStatus("mintStatus", "Live mint stats couldn't be loaded — the network is busy. No stale numbers are shown; try refreshing the page.");
+  }
+}
+refreshStats();
+
+// ---- Newest Nodes feed (real on-chain data: ownerOf of the latest tokenIds) ----
+async function refreshFeed() {
+  try {
+    const rows = await readWithFallback(async (c) => {
+      const total = Number(await c.totalSupply());
+      const ids = [];
+      for (let i = 0; i < 8 && total - i >= 1; i++) ids.push(total - i);
+      const owners = await Promise.all(ids.map((id) => safeCall(c.ownerOf(id))));
+      return ids.map((id, i) => ({ id, owner: owners[i] }));
+    });
+    if (!rows.length) { $("feed").innerHTML = '<div class="feed-empty">No Nodes minted yet.</div>'; return; }
+    $("feed").innerHTML = rows.map((r) => {
+      const v = variantOf(r.id);
+      return '<div class="feed-row"><img src="' + imgOf(v) + '" alt="' + v.name + '" loading="lazy">' +
+        '<div class="feed-main"><b>SEVEN SIGMA #' + r.id + ' · ' + v.name + '</b>' +
+        '<span>Held by ' + (r.owner ? short(r.owner) : '–') + ' · 1 of 111 ' + v.name.replace("Dark Stone — ", "") + '</span></div>' +
+        '<span class="feed-id">#' + r.id + '</span>' +
+        '<a href="metadata/' + r.id + '" target="_blank" rel="noopener">Metadata</a></div>';
+    }).join("");
+  } catch (e) {
+    $("feed").innerHTML = '<div class="feed-empty">The newest Nodes couldn\'t be loaded — the network is busy. Nothing here is made up; try refreshing the page.</div>';
+  }
+}
+refreshFeed();
+
+// ---- Quantity selector ----
+function updateTotal() {
+  $("qtyNum").textContent = qty;
+  $("totalUsd").textContent = "$" + (0.30 * qty).toFixed(2);
+  $("totalBnb").textContent = (PAID_PRICE_BNB * qty).toFixed(5) + " BNB";
+}
+$("qtyMinus").onclick = () => { if (qty > 1) { qty--; updateTotal(); } };
+$("qtyPlus").onclick = () => { if (qty < 3) { qty++; updateTotal(); } };
+updateTotal();
+
+// ---- Copy buttons ----
+document.querySelectorAll("[data-copy]").forEach((el) => {
+  el.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(el.dataset.copy); el.textContent = "Copied ✓"; setTimeout(() => { el.textContent = "Copy"; }, 2000); }
+    catch (e) { el.textContent = "Copy failed"; }
+  });
+});
+
+// ---- The copy-paste agent prompt (MAINNET) ----
+function buildPrompt(addr) {
+  const who = addr ? addr : "my wallet";
+  const whoLine = addr
+    ? "Mint for wallet " + addr + " (check that this is the wallet your agent controls — if it controls a different wallet, mint for that one instead and check it first)."
+    : "Mint for my wallet (the wallet your agent controls).";
+  return "Mint a SEVEN SIGMA (SIGMA) NFT for me on BNB Smart Chain MAINNET (chainId 56). This is MAINNET — use real BNB.\n"
+    + whoLine + "\n\n"
+    + "Contract (mainnet): 0x9281740a566901aFBA3E566e505e1896bE176ff8\n"
+    + "Name: SEVEN SIGMA, symbol SIGMA. Total supply 777. First 150 free for Binance Agent ID holders (1 per wallet, gas only) — SOLD OUT. Paid phase: 0.00042 BNB (~$0.30) per mint, max 3 per transaction, open to ALL wallets. PAID mint does NOT check Agent ID. Only the FREE mint checks Agent ID.\n"
+    + "Agent ID registry (mainnet, real): 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F — check balanceOf(" + who + ") there; above 0 means it holds an Agent ID.\n\n"
+    + "CHECKS FIRST (read-only, via a public BSC mainnet RPC — do not skip these):\n"
+    + "- totalSupply(), freeMintedCount(), freeRemaining(), paidRemaining(), freeOpen(), paidOpen() on the contract.\n"
+    + "- freeMinted(" + who + ") — true means this wallet already used its free mint.\n"
+    + "- registry balanceOf(" + who + ") — must be above 0 for the free mint.\n\n"
+    + "THEN MINT (only one of these):\n"
+    + "- Free phase is SOLD OUT (150/150). Do NOT call freeMint().\n"
+    + "- If paidOpen() is true: call mint(1) with value exactly 0.00042 BNB. Any wallet can paid-mint — no Agent ID needed.\n"
+    + "- Else: stop and tell me why — do not mint.\n\n"
+    + "SAFETY: preview the contract call first and show me the parsed transaction, the exact value, and any risks. Wait for my explicit confirmation before executing. Never attach BNB to freeMint(). Never mint more than 3 per transaction.\n"
+    + "After minting, verify on-chain (totalSupply went up and ownerOf of the new token is my wallet) and show me the transaction hash with a BscScan link.";
+}
+function refreshPrompt() { $("agentPrompt").value = buildPrompt(checkedAddr); }
+refreshPrompt();
+
+$("copyPrompt").onclick = async () => {
+  try {
+    await navigator.clipboard.writeText($("agentPrompt").value);
+    $("copyStatus").textContent = "✅ Copied — paste it into your AI agent.";
+  } catch (e) {
+    $("agentPrompt").select();
+    $("copyStatus").textContent = "Copy didn't work automatically — the prompt is selected, press Ctrl+C / Cmd+C.";
+  }
+};
+
+// ---- Step 1: paste-address checker (no wallet, read-only, MAINNET) ----
+$("checkBtn").onclick = async () => {
+  const raw = $("addrInput").value.trim();
+  if (!ethers.isAddress(raw)) {
+    setStatus("checkStatus", "That doesn't look like a wallet address. It should start with 0x and be 42 characters long.");
+    $("checkResult").style.display = "none";
+    return;
+  }
+  const addr = ethers.getAddress(raw);
+  checkedAddr = addr;
+  refreshPrompt();
+  setStatus("checkStatus", "Checking " + short(addr) + " on BSC mainnet…");
+  try {
+    const r = await readWithFallback(async (c, reg) => {
+      const [agentBal, usedFree, bal, total, freeLeft, freeOpen, paidOpen] = await Promise.all([
+        reg.balanceOf(addr),
+        safeCall(c.freeMinted(addr)),
+        safeCall(c.balanceOf(addr)),
+        safeCall(c.totalSupply()),
+        safeCall(c.freeRemaining()),
+        safeCall(c.freeOpen()),
+        safeCall(c.paidOpen())
+      ]);
+      return { agentBal, usedFree, bal, total, freeLeft, freeOpen, paidOpen };
+    });
+    const hasAgent = r.agentBal > 0n;
+    $("rAddr").textContent = addr;
+    $("rAgent").textContent = hasAgent ? "Yes ✓" : "No ✗";
+    $("rAgent").className = hasAgent ? "yes" : "no";
+    $("rUsed").textContent = r.usedFree === null ? "–" : (r.usedFree ? "Yes — already used" : "No — not used yet");
+    $("rUsed").className = r.usedFree ? "no" : "";
+    $("rBalance").textContent = r.bal === null ? "–" : r.bal.toString();
+    $("checkResult").style.display = "block";
+    let verdict;
+    if (r.paidOpen) verdict = "Paid minting is open at 0.00042 BNB each, for any wallet. No Agent ID needed for paid. The free phase is sold out (150/150).";
+    else if (r.freeOpen && hasAgent && !r.usedFree) verdict = "✅ You can free mint! Copy the prompt below and paste it into your AI agent.";
+    else verdict = "Minting is closed / sold out.";
+    $("rVerdict").textContent = verdict;
+    const totalTxt = r.total === null ? "?" : r.total.toString();
+    const freeTxt = r.freeLeft === null ? "?" : r.freeLeft.toString();
+    setStatus("checkStatus", "Checked on-chain: " + totalTxt + " minted, " + freeTxt + " free left, phase " + (r.paidOpen ? "PAID" : "FREE") + ". The prompt below now uses this address.");
+  } catch (e) {
+    setStatus("checkStatus", "Check failed — the BSC mainnet RPC is busy. Try again in a few seconds.");
+  }
+};
+$("addrInput").addEventListener("keydown", (e) => { if (e.key === "Enter") $("checkBtn").click(); });
+
+// ---- Connect + paid mint in the browser (MAINNET) ----
+$("connectBtn").onclick = async () => {
+  if (!window.ethereum) { setStatus("mintStatus", "No wallet found. Install MetaMask (or a wallet with a browser extension), then come back and connect."); return; }
+  try {
+    provider = new ethers.BrowserProvider(window.ethereum);
+    const net = await provider.getNetwork();
+    if (Number(net.chainId) !== CHAIN_ID) {
+      try {
+        await window.ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+      } catch (switchErr) {
+        if (switchErr.code === 4902) {
+          await window.ethereum.request({ method: "wallet_addEthereumChain", params: [{
+            chainId: "0x38", chainName: "BNB Smart Chain",
+            nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
+            rpcUrls: RPC_URLS, blockExplorerUrls: ["https://bscscan.com"]
+          }]});
+        } else { throw switchErr; }
+      }
+      provider = new ethers.BrowserProvider(window.ethereum);
+    }
+    signer = await provider.getSigner();
+    userAddr = await signer.getAddress();
+    contract = new ethers.Contract(CONTRACT_ADDRESS, MIN_ABI, signer);
+    $("connectBtn").textContent = "Connected: " + short(userAddr);
+    $("paidMintBtn").disabled = false;
+    setStatus("mintStatus", "Wallet connected (" + short(userAddr) + "). Paid mint is open — pick a quantity and mint. The free phase is sold out.");
+    await refreshStats();
+  } catch (e) { setStatus("mintStatus", plainError(e)); }
+};
+
+$("paidMintBtn").onclick = async () => {
+  if (!contract || !userAddr) { setStatus("mintStatus", "Connect your wallet first."); return; }
+  const total = (PAID_PRICE_BNB * qty).toFixed(5);
+  try {
+    const paidOpen = await readWithFallback(async (c) => c.paidOpen());
+    if (!paidOpen) { setStatus("mintStatus", "Paid minting isn't open right now."); return; }
+    setStatus("mintStatus", "This will cost exactly " + total + " BNB for " + qty + " Node" + (qty > 1 ? "s" : "") + " (plus a little gas). Confirm in your wallet.");
+    const tx = await contract.mint(qty, { value: ethers.parseEther(total) });
+    setStatus("mintStatus", "Mint sent! Waiting for confirmation…<br>" + txLink(tx.hash));
+    const rc = await tx.wait();
+    if (rc.status !== 1) { setStatus("mintStatus", "The transaction was sent but it failed on-chain. Check the link: " + txLink(tx.hash)); return; }
+    // Reveal: find the minted tokenIds from the receipt's Transfer events (from the zero address)
+    let mintedIds = [];
+    try {
+      for (const log of rc.logs) {
+        if (log.topics && log.topics[0] === ethers.id("Transfer(address,address,uint256)") &&
+            log.topics[1] === ethers.ZeroHash && log.address.toLowerCase() === CONTRACT_ADDRESS.toLowerCase()) {
+          mintedIds.push(Number(BigInt(log.topics[3])));
+        }
+      }
+    } catch (e) { /* reveal falls back to a plain confirmation */ }
+    await refreshStats();
+    await refreshFeed();
+    if (mintedIds.length) {
+      const first = mintedIds[0];
+      const v = variantOf(first);
+      $("revealImg").src = imgOf(v);
+      $("revealImg").alt = "SEVEN SIGMA #" + first + " — " + v.name;
+      $("revealTitle").textContent = "You pulled SEVEN SIGMA #" + first;
+      $("revealLine").textContent = v.name + " · Variant " + v.n + " of 7 · 1 of 111 · Added to your collection" +
+        (mintedIds.length > 1 ? " (+" + (mintedIds.length - 1) + " more: #" + mintedIds.slice(1).join(", #") + ")" : "");
+      $("revealView").href = EXPLORER_TOKEN + first;
+      $("revealBox").classList.add("show");
+      setStatus("mintStatus", "✅ Paid mint confirmed! " + total + " BNB paid for " + qty + " Node" + (qty > 1 ? "s" : "") + ".<br>" + txLink(tx.hash));
+    } else {
+      setStatus("mintStatus", "✅ Paid mint confirmed! " + total + " BNB paid for " + qty + " Node" + (qty > 1 ? "s" : "") + ".<br>" + txLink(tx.hash));
+    }
+  } catch (e) { setStatus("mintStatus", plainError(e)); }
+};
+$("revealKeep").onclick = () => { $("revealBox").classList.remove("show"); };
+
+// ---- FAQ accordion ----
+const FAQS = [
+  { q: "How does the free mint work?", a: "The free phase gave 150 Genesis Nodes to Binance Agent ID holders — 1 per wallet, gas only. It is sold out (150/150 claimed). The free mint checked Agent ID; it can never be used twice by the same wallet." },
+  { q: "How does the paid mint work?", a: "Paid minting is open to everyone at $0.30 (0.00042 BNB) per Node, max 3 per transaction. Any wallet can paid-mint — no Agent ID is needed. The price, the 777 supply cap, and the 3-per-transaction max are fixed in the contract and cannot be changed." },
+  { q: "What are the 7 variants?", a: "One Dark Stone base, seven ways the light falls on it: Original, Teal Left, Gold Right, Violet Above, Ember Below, White Right, and Gold Above — 111 of each. Assignment is cyclic: variant = (tokenId − 1) mod 7 + 1, so every variant is spread evenly through the free and paid phases. No variant is rarer than another." },
+  { q: "How do I know the mint is fair?", a: "Everything is on-chain and verifiable. The contract is verified on Sourcify (exact match) and BscScan. Supply is fixed at 777, the owner cannot mint extra Nodes, and the variant assignment is a public formula, not a hidden draw. You can read totalSupply, freeRemaining and paidRemaining yourself, or check any token's metadata at /metadata/<tokenId>." },
+  { q: "What is a Sigma Node?", a: "A verifiable compute license, not just art. Each of the 777 NFTs is one node in a Cognitive Orderflow Mesh. Seven autonomous sub-agents live inside each Node, one for each edge: basis trade, funding-rate harvest, volatility convexity, cross-market arbitrage, TWAP stealth execution, MEV-shielded routing, and tail-risk hedging." },
+  { q: "What is $SIGMA, and how is it different from the NFT?", a: "The NFT collection's symbol is SIGMA. A future token called $SIGMA is planned — same ticker, separate thing. $SIGMA is the planned fee / staking / governance token of the Mesh, with 777,000,000 total planned and 7.77% reserved for Node holders weighted by hold time, with a multiplier for the Genesis 150. No date, no price, and no airdrop is promised. Holding a Node does not entitle anyone to tokens or payouts." },
+  { q: "Is the contract audited?", a: "No — the contract has NOT been audited by a third party. It uses OpenZeppelin ERC721 + ERC721Royalty + Ownable + ReentrancyGuard. The owner can withdraw BNB and change metadata via setBaseURI, and can transfer or renounce ownership. The owner cannot change supply (777), free supply (150), price (0.00042 BNB), max 3 per transaction, or the Agent ID registry, and cannot mint extra NFTs, pause, freeze, burn, or take holders' NFTs. Royalties are 5% ERC-2981." },
+  { q: "What happens after I mint?", a: "Your Node's variant is revealed from the mint itself. You can view its metadata at /metadata/<tokenId> on this site, see it under your wallet on BscScan, and it stays yours to hold or transfer. There is no lock-up and no staking yet." }
+];
+$("faqGrid").innerHTML = FAQS.map((f) =>
+  '<div class="faq-item"><button type="button" class="faq-q"><i class="qi">i</i><span>' + f.q + '</span><span class="chev">+</span></button>' +
+  '<div class="faq-a">' + f.a + '</div></div>').join("");
+document.querySelectorAll(".faq-item").forEach((item) => {
+  item.querySelector(".faq-q").addEventListener("click", () => item.classList.toggle("open"));
+});
+
+// ---- EN / 中文 toggle ----
+const I18N = {
+  nav_mint: ["Mint a Node", "铸造节点"],
+  hero_live: ["Live on BSC mainnet", "已上线 BSC 主网"],
+  hero_h1a: ["Mint the Node.", "铸造节点。"],
+  hero_h1b: ["Keep the Signal.", "守住信号。"],
+  hero_sub: ["777 Sigma Nodes on BNB Smart Chain. Seven Dark Stone variants, 111 of each — one node, seven sub-agents, provably first.", "BNB 智能链上的 777 个 Sigma 节点。七种暗石变体，各 111 个——一个节点，七个子代理，可验证的先行者。"],
+  hero_cta: ["Mint a Node — $0.30", "铸造节点 — $0.30"],
+  hero_secondary: ["See what's inside", "看看里面有什么"],
+  stat_minted: ["Minted / 777", "已铸造 / 777"],
+  stat_paid_left: ["Paid left", "付费剩余"],
+  stat_free_left: ["Free left", "免费剩余"],
+  stat_price: ["Paid price / Node", "付费价格 / 节点"],
+  viewer_eyebrow: ["The 7 variants · 111 of each", "七种变体 · 各 111 个"],
+  viewer_note: ["Token assignment is cyclic — variant = (tokenId − 1) mod 7 + 1 — so every variant is spread through the free and paid phases. Your variant is revealed when you mint.", "代币分配是循环的——变体 = (tokenId − 1) mod 7 + 1——因此每种变体均匀分布在免费和付费阶段。铸造时揭晓你的变体。"],
+  panel_live: ["Live on BSC mainnet", "已上线 BSC 主网"],
+  panel_eyebrow: ["Paid mint · open to all wallets", "付费铸造 · 对所有钱包开放"],
+  panel_price_sub: ["0.00042 BNB per Node · max 3 per transaction", "每个节点 0.00042 BNB · 每笔交易最多 3 个"],
+  row_minted: ["Minted", "已铸造"],
+  row_paid_left: ["Paid Nodes left", "付费节点剩余"],
+  row_free: ["Free Genesis (150)", "免费创世（150）"],
+  row_free_sold: ["Sold out", "已售罄"],
+  row_qty: ["Quantity", "数量"],
+  row_total: ["Total", "总计"],
+  btn_connect: ["Connect wallet", "连接钱包"],
+  btn_mint: ["Mint Node", "铸造节点"],
+  mint_status_default: ["Connect a wallet on BNB Smart Chain to mint. Paid mint needs no Agent ID.", "连接 BNB 智能链钱包即可铸造。付费铸造无需 Agent ID。"],
+  reveal_keep: ["Keep", "保留"],
+  reveal_view: ["View Node", "查看节点"],
+  panel_note_title: ["Free phase is over.", "免费阶段已结束。"],
+  panel_note_body: ["All 150 free Genesis Nodes were claimed. Paid minting is open to everyone — no Agent ID needed, any wallet can mint.", "150 个免费创世节点已全部领取。付费铸造对所有人开放——无需 Agent ID，任何钱包都可铸造。"],
+  btn_copy: ["Copy", "复制"],
+  check_eyebrow: ["Check your wallet — no connection needed", "检查你的钱包——无需连接"],
+  check_title: ["Do you hold a Node?", "你持有节点吗？"],
+  check_sub: ["Paste any wallet address. We only read the chain — nothing is signed, nothing is connected.", "粘贴任意钱包地址。我们只读取链上数据——不签名，不连接。"],
+  check_btn: ["Check my wallet", "检查我的钱包"],
+  check_default: ["Paste an address above, or just read the live mint stats.", "在上方粘贴地址，或直接查看实时铸造数据。"],
+  check_wallet: ["Wallet:", "钱包："],
+  check_agent: ["Binance Agent ID:", "币安 Agent ID："],
+  check_used: ["Free mint already used:", "免费铸造已使用："],
+  check_held: ["SIGMA held:", "持有 SIGMA："],
+  inside_eyebrow: ["What's inside", "里面有什么"],
+  inside_title: ["Seven ways the light falls", "光芒的七种落法"],
+  inside_sub: ["One Dark Stone base, seven variants. Each variant is one of the seven strategies in the Mesh — 111 of each, spread across all 777 Nodes.", "一个暗石底座，七种变体。每种变体对应 Mesh 中的一种策略——各 111 个，分布在全部 777 个节点中。"],
+  feed_eyebrow: ["Fresh from the chain", "链上最新"],
+  feed_title: ["Newest Nodes", "最新节点"],
+  feed_sub: ["The most recently minted Nodes, read live from the contract — token, variant, and current holder.", "最近铸造的节点，实时读取自合约——代币、变体与当前持有者。"],
+  feed_loading: ["Loading the newest Nodes from the chain…", "正在从链上加载最新节点……"],
+  how_eyebrow: ["How minting works", "铸造流程"],
+  how_title: ["Four steps to your Node", "四步获得你的节点"],
+  step1_t: ["Connect wallet", "连接钱包"],
+  step1_b: ["Connect any wallet on BNB Smart Chain. No Agent ID is needed for the paid mint.", "连接任意 BNB 智能链钱包。付费铸造无需 Agent ID。"],
+  step2_t: ["Mint — $0.30", "铸造 — $0.30"],
+  step2_b: ["Pick 1 to 3 Nodes. Each costs exactly 0.00042 BNB. Confirm in your wallet and wait for the chain.", "选择 1 至 3 个节点。每个恰好 0.00042 BNB。在钱包中确认并等待上链。"],
+  step3_t: ["Reveal your variant", "揭晓你的变体"],
+  step3_b: ["Your Node's variant is revealed from the mint itself — one of seven Dark Stone variants, 111 of each.", "你的节点变体由铸造本身揭晓——七种暗石变体之一，各 111 个。"],
+  step4_t: ["View your Node", "查看你的节点"],
+  step4_b: ["See it in the collection metadata at /metadata/<tokenId>, or on BscScan under your wallet.", "在 /metadata/<tokenId> 查看收藏元数据，或在 BscScan 上查看你的钱包。"],
+  about_eyebrow: ["What a Sigma Node is", "什么是 Sigma 节点"],
+  about_title: ["A licence, not just art", "是许可证，不只是艺术"],
+  about_sub: ["A Sigma Node is a verifiable compute license. Each of the 777 NFTs is one node in a Cognitive Orderflow Mesh. Seven autonomous sub-agents live inside each Node, one for each edge: basis trade, funding-rate harvest, volatility convexity, cross-market arbitrage, TWAP stealth execution, MEV-shielded routing, and tail-risk hedging. The market doesn't reward being right. It rewards being right first, provably, and at size, before the order flow decays.", "Sigma 节点是一张可验证的算力许可证。777 个 NFT 中的每一个都是认知订单流网络中的一个节点。每个节点内有七个自主子代理，各负责一条优势：基差交易、资金费率收获、波动率凸性、跨市场套利、TWAP 隐形执行、MEV 防护路由和尾部风险对冲。市场奖励的不是正确，而是可证明地率先正确，并且有规模，在订单流衰减之前。"],
+  about_token_t: ["About the token", "关于代币"],
+  about_token_b: ["The NFT collection symbol is SIGMA. A future token called $SIGMA is planned — same ticker, separate thing. $SIGMA is the planned fee / staking / governance token of the Mesh, with 777,000,000 total planned and 7.77% reserved for Node holders weighted by hold time, with a multiplier for the Genesis 150. No date, no price, and no airdrop is promised. Holding a Node does not entitle anyone to tokens or payouts.", "NFT 系列的符号是 SIGMA。未来计划推出名为 $SIGMA 的代币——同一代码，不同事物。$SIGMA 是 Mesh 计划中的费用 / 质押 / 治理代币，总量计划为 777,000,000，其中 7.77% 预留给按持有时间加权的节点持有者，创世 150 享有倍数。不承诺日期、价格和空投。持有节点并不使任何人有权获得代币或收益。"],
+  about_road_t: ["Roadmap — stages, not dates", "路线图——阶段，而非日期"],
+  about_road_b: ["Stage 1 — Testnet build, scans, metadata (done). Stage 2 — Mainnet deploy and verification (done). Stage 3 — Launch: 150 free Genesis Nodes for Agent ID holders (sold out). Stage 4 — Paid mint open to all wallets at 0.00042 BNB (live now). Stage 5 — $SIGMA planning. No date promised, no price promised.", "第一阶段——测试网构建、扫描、元数据（已完成）。第二阶段——主网部署与验证（已完成）。第三阶段——上线：150 个免费创世节点给 Agent ID 持有者（已售罄）。第四阶段——付费铸造对所有钱包开放，0.00042 BNB（进行中）。第五阶段——$SIGMA 规划。不承诺日期，不承诺价格。"],
+  about_honest_t: ["Honest notes:", "坦诚说明："],
+  about_honest_b: ["the contract is NOT audited by a third party. It uses OpenZeppelin ERC721 + ERC721Royalty + Ownable + ReentrancyGuard. The owner can withdraw BNB and change metadata via setBaseURI, and can transfer or renounce ownership. The owner cannot change supply (777), free supply (150), price (0.00042 BNB), max 3 per transaction, or the Agent ID registry, and cannot mint extra NFTs, pause, freeze, burn, or take holders' NFTs. Royalties are 5% ERC-2981 to the owner, but some marketplaces ignore ERC-2981. No floor price, returns, or APY is promised.", "合约未经第三方审计。它使用 OpenZeppelin ERC721 + ERC721Royalty + Ownable + ReentrancyGuard。所有者可以提取 BNB 并通过 setBaseURI 更改元数据，也可以转移或放弃所有权。所有者无法更改供应量（777）、免费供应量（150）、价格（0.00042 BNB）、每笔交易最多 3 个或 Agent ID 注册表，也无法增发 NFT、暂停、冻结、销毁或夺取持有者的 NFT。版税为 5% ERC-2981 归所有者，但部分市场会忽略 ERC-2981。不承诺地板价、回报或年化收益。"],
+  agent_eyebrow: ["Mint with your own AI agent", "用你自己的 AI 代理铸造"],
+  agent_title: ["Copy the mint prompt", "复制铸造提示词"],
+  agent_sub: ["Paste this into your AI agent (Binance Agentic Wallet, Muse, etc.). It checks everything first, shows you a preview, and waits for your OK before minting. No wallet connection needed here.", "将此粘贴到你的 AI 代理（币安 Agentic Wallet、Muse 等）中。它会先检查一切，向你展示预览，并在铸造前等待你的确认。这里无需连接钱包。"],
+  agent_copy: ["Copy mint prompt", "复制铸造提示词"],
+  agent_llms: ["View llms.txt", "查看 llms.txt"],
+  agent_tip: ["Tip: if you checked an address above, the prompt is filled in with that address. Otherwise it says \"my wallet\" and your agent will use whichever wallet it controls.", "提示：如果你在上方检查过地址，提示词会填入该地址。否则会写“我的钱包”，你的代理将使用它控制的钱包。"],
+  faq_eyebrow: ["Questions", "问题"],
+  faq_title: ["Frequently asked", "常见问题"],
+  footer_about: ["777 Sigma Nodes on BNB Smart Chain. Seven Dark Stone variants, 111 of each. A verifiable compute license — one node, seven sub-agents.", "BNB 智能链上的 777 个 Sigma 节点。七种暗石变体，各 111 个。一张可验证的算力许可证——一个节点，七个子代理。"],
+  footer_links: ["Links", "链接"],
+  footer_rights: ["All rights reserved.", "版权所有。"],
+  footer_note: ["No floor price, returns, or APY is promised. Holding a Node does not entitle anyone to tokens or payouts.", "不承诺地板价、回报或年化收益。持有节点并不使任何人有权获得代币或收益。"]
+};
+let LANG = "en";
+function setLang(l) {
+  LANG = l;
+  document.documentElement.lang = l === "zh" ? "zh-CN" : "en";
+  $("langEn").classList.toggle("active", l === "en");
+  $("langZh").classList.toggle("active", l === "zh");
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const k = el.dataset.i18n;
+    if (I18N[k]) el.textContent = I18N[k][l === "zh" ? 1 : 0];
+  });
+  try { localStorage.setItem("sigma-lang", l); } catch (e) {}
+}
+try { const saved = localStorage.getItem("sigma-lang"); if (saved === "zh") setLang("zh"); } catch (e) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "address": "0x5332713cBC477893e5CFDd8087B8B78a5e6AaFFe",
+  "chainId": 97,
+  "getsourcecode_before": {
+    "status": "1",
+    "message": "OK",
+    "ContractName": "",
+    "CompilerVersion": "",
+    "OptimizationUsed": "",
+    "Runs": "",
+    "EVMVersion": "Default",
+    "LicenseType": "Unknown",
+    "SourceCode_chars": 0,
+    "ABI": "Contract source code not verified"
+  },
+  "sourcify_forwarded_guid": "",
+  "sourcify_forwarded_status": {
+    "status": "0",
+    "message": "NOTOK",
+    "result": "Invalid GUID length"
+  },
+  "submit": {
+    "status": "0",
+    "message": "NOTOK",
+    "result": "Error!"
+  },
+  "verified": false
+}

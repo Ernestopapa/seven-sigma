@@ -1,0 +1,67 @@
+{
+  "network": "BSC testnet",
+  "chainId": 97,
+  "at": "2026-11-02T03:23:00.712Z",
+  "tests": [
+    {
+      "name": "freeMint (agent wallet)",
+      "ok": true,
+      "detail": "tx 0x47975f8bb51fdcb84f3eaac1a292db3458993ac97608f02cc60c33477aeb4908 gas 127754 token #1 (crashed run, verified on-chain: ownerOf(1) is an agent wallet)"
+    },
+    {
+      "name": "double freeMint reverts",
+      "ok": true,
+      "detail": "execution reverted: \"already claimed free\" (crashed run)"
+    },
+    {
+      "name": "freeMint (non-agent) reverts",
+      "ok": true,
+      "detail": "execution reverted: \"no Agent ID\" (crashed run)"
+    },
+    {
+      "name": "paid mint blocked during free phase",
+      "ok": false,
+      "detail": "NOT PROVEN on testnet — the crashed run's check failed with INSUFFICIENT_FUNDS (agent wallet held only 0.0001 tBNB, could not afford 0.00042), so the revert did not come from the contract. The gate is proven locally (44/44 Anvil tests); testnet re-proof needs a funded wallet before the free phase ends, which is no longer possible on this contract (free is exhausted)."
+    },
+    {
+      "name": "free supply exhausted (150/150)",
+      "ok": true,
+      "detail": "freeMintedCount=150 last tx 0x908f4c86916deef24a0cf8df473575bc51f17b2b5c8948b8d46a2e9638ee76c9 (crashed run, verified on-chain)"
+    },
+    {
+      "name": "freeRemaining 0 / paidOpen true",
+      "ok": true,
+      "detail": "verified on-chain: freeRemaining 0, paidOpen true"
+    },
+    {
+      "name": "paid mint x1 (NON-AGENT) succeeds after free exhaustion",
+      "ok": true,
+      "detail": "tx 0x94cc6d60a148a4880a87c6b9f11b66e5ef8cfaab252facc22b32baa8cba939ac gas 102531 token #151 to plain wallet 0xa59a2f2540a9435e09fcdd82aDE21AECe3f36Fce (crashed run, verified on-chain: ownerOf(151))"
+    },
+    {
+      "name": "paid mint x3 (agent) succeeds",
+      "ok": true,
+      "detail": "tx 0xb4883fc2b9c30530b3c8c332f8c723ec7a56fc170e3bd470cb5727c164eb1014 gas 139531 tokens #152-154 to deployer (agent)"
+    },
+    {
+      "name": "paid mint qty 4 reverts",
+      "ok": true,
+      "detail": "execution reverted: \"qty 1..3\" (action=\"estimateGas\", data=\"0x08c379a000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "paid mint wrong price reverts",
+      "ok": true,
+      "detail": "execution reverted: \"wrong price\" (action=\"estimateGas\", data=\"0x08c379a000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "royaltyInfo 5% to owner",
+      "ok": true,
+      "detail": "receiver 0xd943bdD7236E000BF914531Bc235b60200f0d65D amount 0.05 tBNB on 1 tBNB sale"
+    },
+    {
+      "name": "totalSupply 154 after x3",
+      "ok": true,
+      "detail": "totalSupply=154"
+    }
+  ]
+}
